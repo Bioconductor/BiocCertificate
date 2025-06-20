@@ -1,13 +1,17 @@
 name: Build shiny Docker image and generate Galaxy wrapper
 on:
   workflow_dispatch: {}
-  push: {}
+  push:
+    branches: devel
+    paths:
+      - 'DESCRIPTION'
+      - '**.yml'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Extract metadata for container image
         id: meta
