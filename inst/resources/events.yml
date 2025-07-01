@@ -5,6 +5,12 @@ events:
     elocation: "Cold Spring Harbor Laboratory\\\\[.25cm] Cold Spring Harbor, NY, United States"
     eurl: https://gbcc2025.bioconductor.org/
     stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/GBCC2025/GBCC2025.png
+  cofest2025:
+    ename: "Galaxy Bioconductor Collaboration Festival"
+    edate: June 27 - 28, 2025
+    elocation: "Weill Cornell Medicine\\\\[.25cm] New York, NY, United States"
+    eurl: https://gbcc2025.bioconductor.org/cofest/overview/
+    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/GBCC2025/GBCC2025.png
   introeurobioc2024:
     ename: "Introduction to genomic data analysis with R and Bioconductor"
     edate: September 2 - 3, 2024
