@@ -16,6 +16,8 @@ Imports:
   crul,
   rmarkdown,
   shinyjs,
+  shinythemes,
+  fontawesome,
   whisker,
   yaml
 Suggests:

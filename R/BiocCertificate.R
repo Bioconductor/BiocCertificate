@@ -38,21 +38,25 @@ appCSS <- paste(
 #'
 #' @importFrom shinyjs show hide hidden enable disable inlineCSS toggleState
 #'   html
+#' @importFrom utils packageVersion
+#' @importFrom shinythemes shinytheme
+#' @importFrom fontawesome fa
 #' @export
 BiocCertificate <- function(...) {
     fieldsAll <- c("eid", "ename", "fullname", "address")
     ui <- fluidPage(
+        theme = shinytheme("yeti"),
         shinyjs::useShinyjs(),
         inlineCSS(appCSS),
         titlePanel(
             windowTitle = "Bioconductor Certificate Form",
             title = div(
+                style = "display: flex; align-items: center; justify-content: space-between;",
+                h1(id = "big-heading", "Certificate of Participation"),
                 img(
                     src = "images/bioconductor_logo_rgb_small.png",
-                    align = "right",
-                    style = "margin-right:10px"
-                ),
-                h1(id = "big-heading", "Certificate of Participation")
+                    height = "50px"
+                )
             )
         ),
         sidebarLayout(
@@ -133,7 +137,22 @@ BiocCertificate <- function(...) {
                 ),
                 width = 9
             )
-        ) # sidebarLayout
+        ), # sidebarLayout
+        hr(),
+        div(
+            style = "display: flex; justify-content: center; align-items: center; gap: 10px;",
+            a(
+                href = "https://github.com/Bioconductor/BiocCertificate",
+                fa("github", height = "2em"),
+                target = "_blank"
+            ),
+            p(
+                "Version:",
+                code(
+                    as.character(packageVersion("BiocCertificate"))
+                )
+            )
+        )
     ) # fluidPage
 
     server <- function(input, output, session) {
