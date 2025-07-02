@@ -72,6 +72,27 @@ jobs:
           echo "name=$NAME" >> $GITHUB_OUTPUT
           echo "id=$(echo $NAME | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
 
+  update-certs-site:
+    needs: [build-push]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: save kubeconfig
+        shell: bash
+        run: mkdir -p ~/.kube && echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
+      
+      - name: Install Kubectl
+        run: |
+          curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.24.4/bin/linux/amd64/kubectl" && \
+          chmod +x ./kubectl && \
+          mv ./kubectl /usr/local/bin/kubectl && \
+          kubectl version
+
+      - name: Clean up old pod
+        run: |
+          sleep 60 && kubectl get pod -n certs -o name | xargs -i kubectl delete -n certs {}
+
   generate-wrapper:
     needs: [check-wrapper, build-push]
     if: needs.check-wrapper.outputs.wrapper_missing == 'true' || needs.check-wrapper.outputs.manual == 'true'
