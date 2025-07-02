@@ -6,7 +6,6 @@ on:
     branches: devel
     paths:
       - 'DESCRIPTION'
-      - '**.yml'
 
 jobs:
   check-wrapper:
