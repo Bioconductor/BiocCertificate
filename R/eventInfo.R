@@ -42,7 +42,7 @@ eventData <- function(eid) {
     if (identical(nrow(bquery), 1L) && bfcneedsupdate(bfc, bquery[["rid"]]))
         tryCatch({
             bfcdownload(
-                x = bfc, rid = bquery[["rid"]], rtype = "web", ask = FALSE
+                x = bfc, rid = bquery[["rid"]], ask = FALSE
             )
         }, error = warning)
 
