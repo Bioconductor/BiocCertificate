@@ -106,12 +106,6 @@ BiocCertificate <- function(...) {
                     ),
                     hidden(
                         div(
-                            id = "eurl",
-                            textInput("eurl", label = mandatory("Event URL"))
-                        )
-                    ),
-                    hidden(
-                        div(
                             id = "render_msg",
                             h3("Review the document for accuracy")
                         )
@@ -158,12 +152,8 @@ BiocCertificate <- function(...) {
     server <- function(input, output, session) {
         observeEvent(input$presubmit, {
             eid <- input[["eid"]]
-            ename <- .getEname(eid)
+            ename <- .getEname(eid, input[["template"]])
             updateTextInput(session, "ename", value = ename)
-            if (!identical(input[["template"]], "workshop")) {
-                eurl <- .genEurl(eid)
-                updateTextInput(session, "eurl", value = eurl)
-            }
             disable(id = "presubmit")
         })
         observe({

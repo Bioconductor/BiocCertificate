@@ -1,28 +1,10 @@
-events:
+conference:
   gbcc2025:
     ename: "Galaxy Bioconductor Community Conference"
     edate: June 23 - 26, 2025
     elocation: "Cold Spring Harbor Laboratory\\\\[.25cm] Cold Spring Harbor, NY, United States"
     eurl: https://gbcc2025.bioconductor.org/
     stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/GBCC2025/GBCC2025.png
-  cofest2025:
-    ename: "Galaxy Bioconductor Collaboration Festival"
-    edate: June 27 - 28, 2025
-    elocation: "Weill Cornell Medicine\\\\[.25cm] New York, NY, United States"
-    eurl: https://gbcc2025.bioconductor.org/cofest/overview/
-    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/GBCC2025/GBCC2025.png
-  introeurobioc2024:
-    ename: "Introduction to genomic data analysis with R and Bioconductor"
-    edate: September 2 - 3, 2024
-    elocation: "Department of Statistics, University of Oxford\\\\[.25cm] Oxford, United Kingdom"
-    eurl: https://bioconductor.github.io/2024-09-02-BiocIntro-EuroBioc/
-    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/EuroBioc2024/EuroBioC2024.png
-  rnaseqeurobioc2024:
-    ename: "Analysis and Interpretation of Bulk RNA-Seq Data using Bioconductor"
-    edate: September 2 - 3, 2024
-    elocation: "Department of Statistics, University of Oxford\\\\[.25cm] Oxford, United Kingdom"
-    eurl: https://bioconductor.github.io/2024-09-02-RNASeq-EuroBioc/
-    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/EuroBioc2024/EuroBioC2024.png
   eurobioc2024:
     ename: "European Bioconductor 2024"
     edate: September 4 - 6, 2024
@@ -53,3 +35,22 @@ events:
     elocation: "University of Hong Kong\\\\[.25cm] Hong Kong, China"
     eurl: https://biocasia2023.bioconductor.org
     stickerdl: https://biocasia2023.bioconductor.org/img/carousel/biocAsiaSticker2023.png
+workshop:
+  cofest2025:
+    ename: "Galaxy Bioconductor Collaboration Festival"
+    edate: June 27 - 28, 2025
+    elocation: "Weill Cornell Medicine\\\\[.25cm] New York, NY, United States"
+    eurl: https://gbcc2025.bioconductor.org/cofest/overview/
+    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/GBCC2025/GBCC2025.png
+  introeurobioc2024:
+    ename: "Introduction to genomic data analysis with R and Bioconductor"
+    edate: September 2 - 3, 2024
+    elocation: "Department of Statistics, University of Oxford\\\\[.25cm] Oxford, United Kingdom"
+    eurl: https://bioconductor.github.io/2024-09-02-BiocIntro-EuroBioc/
+    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/EuroBioc2024/EuroBioC2024.png
+  rnaseqeurobioc2024:
+    ename: "Analysis and Interpretation of Bulk RNA-Seq Data using Bioconductor"
+    edate: September 2 - 3, 2024
+    elocation: "Department of Statistics, University of Oxford\\\\[.25cm] Oxford, United Kingdom"
+    eurl: https://bioconductor.github.io/2024-09-02-RNASeq-EuroBioc/
+    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/EuroBioc2024/EuroBioC2024.png

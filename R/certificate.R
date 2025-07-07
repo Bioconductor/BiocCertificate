@@ -26,10 +26,10 @@ templatePath <- function(file = c("certificate", "letter", "workshop")) {
     TRUE
 }
 
-.growData <- function(.data) {
+.growData <- function(.data, type) {
     ## TODO: auto fill based on Event ID
     eid <- .data[["eid"]]
-    edf <- eventData(eid)
+    edf <- eventData(eid, type)
     elogo <- system.file(
         "images", "bioconductor_logo_rgb.png",
         package = "BiocCertificate", mustWork = TRUE
@@ -52,7 +52,7 @@ templatePath <- function(file = c("certificate", "letter", "workshop")) {
 
 certificate <- function(template = "certificate", .data, file) {
     stub <- basename(file)
-    .data <- .growData(.data)
+    .data <- .growData(.data, template)
     .data <- .preprocessData(.data)
     .checkData(.data)
     template <- templatePath(template)

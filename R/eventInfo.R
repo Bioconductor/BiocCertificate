@@ -12,15 +12,22 @@
     yaml::read_yaml(edata)
 }
 
-.filterCheckEID <- function(edata, eid) {
-    eid <- tolower(eid)
-    if (!eid %in% names(edata[["events"]]))
-        stop("Event ID not supported; contact organizers")
-    as.data.frame(edata[["events"]][[eid]])
+.filterType <- function(type) {
+    edata <- .readYmlConfig()
+    if (!type %in% names(edata))
+        stop("<internal> 'type' not supported; contact organizers")
+    edata[[type]]
 }
 
-eventData <- function(eid) {
-    edata <- .readYmlConfig()
+.filterCheckEID <- function(edata, eid) {
+    eid <- tolower(eid)
+    if (!eid %in% names(edata))
+        stop("Event ID not supported; contact organizers")
+    as.data.frame(edata[[eid]])
+}
+
+eventData <- function(eid, type) {
+    edata <- .filterType(type)
     edata <- .filterCheckEID(edata, eid)
     edata[["esticker"]] <- .cache_url_file(edata[["stickerdl"]])
     edata
@@ -51,15 +58,10 @@ eventData <- function(eid) {
     )
 }
 
-.getEname <- function(key) {
-    edata <- .readYmlConfig()
+.getEname <- function(key, type) {
+    if (type %in% c("letter", "certificate"))
+        type <- "conference"
+    edata <- .filterType(type)
     edata <- .filterCheckEID(edata, key)
     edata[["ename"]]
-}
-
-.genEurl <- function(key) {
-    eurl <- paste0("https://", key, ".bioconductor.org")
-    if (!crul::ok(eurl))
-        stop("Event URL does not exist or not available; check 'key'")
-    eurl
 }
