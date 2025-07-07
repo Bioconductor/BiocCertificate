@@ -12,10 +12,10 @@
     yaml::read_yaml(edata)
 }
 
-.filterType <- function(type) {
+.selectType <- function(type) {
     edata <- .readYmlConfig()
     if (!type %in% names(edata))
-        stop("<internal> 'type' not supported; contact organizers")
+        stop("<internal> 'format' section in yaml not found")
     edata[[type]]
 }
 
@@ -27,7 +27,7 @@
 }
 
 eventData <- function(eid, type) {
-    edata <- .filterType(type)
+    edata <- .selectType(type)
     edata <- .filterCheckEID(edata, eid)
     edata[["esticker"]] <- .cache_url_file(edata[["stickerdl"]])
     edata
