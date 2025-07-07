@@ -22,7 +22,7 @@
 .filterCheckEID <- function(edata, eid) {
     eid <- tolower(eid)
     if (!eid %in% names(edata))
-        stop("Event ID not supported; contact organizers")
+        stop("Event ID not found for selected format; contact organizers")
     as.data.frame(edata[[eid]])
 }
 
