@@ -52,7 +52,13 @@ templatePath <- function(file = c("certificate", "letter", "workshop")) {
 
 certificate <- function(template = "certificate", .data, file) {
     stub <- basename(file)
-    .data <- .growData(.data, template)
+    type <- switch(
+        template,
+        letter =,
+        certificate = "conference",
+        workshop = "workshop"
+    )
+    .data <- .growData(.data, type)
     .data <- .preprocessData(.data)
     .checkData(.data)
     template <- templatePath(template)
