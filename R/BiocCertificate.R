@@ -43,7 +43,7 @@ appCSS <- paste(
 #' @importFrom fontawesome fa
 #' @export
 BiocCertificate <- function(...) {
-    fieldsAll <- c("eid", "ename", "fullname", "address")
+    fieldsAll <- c("eid", "fullname", "address")
     ui <- fluidPage(
         theme = shinytheme("yeti"),
         shinyjs::useShinyjs(),
@@ -75,19 +75,10 @@ BiocCertificate <- function(...) {
                             "eid",
                             mandatory("Event ID"),
                             placeholder = "Bioc####"
-                        ),
-                        actionButton(
-                            "presubmit", "Populate", class = "btn-primary"
                         )
                     ),
-                    br(),
                     div(
                         id = "form",
-                        textInput(
-                            "ename",
-                            "Event Name",
-                            placeholder = "Bioconductor ####"
-                        ),
                         textInput(
                             "fullname",
                             mandatory("First and last name"),
@@ -150,12 +141,6 @@ BiocCertificate <- function(...) {
     ) # fluidPage
 
     server <- function(input, output, session) {
-        observeEvent(input$presubmit, {
-            eid <- input[["eid"]]
-            ename <- .getEname(eid, input[["template"]])
-            updateTextInput(session, "ename", value = ename)
-            disable(id = "presubmit")
-        })
         observe({
             mandatoryFilled <- vapply(
                 .MANDATORY_INPUT_FIELDS,
@@ -164,7 +149,7 @@ BiocCertificate <- function(...) {
                 },
                 logical(1L)
             )
-            if (identical(input$template, "letter"))
+            if (identical(input[["template"]], "letter"))
                 hasAddress <- BiocBaseUtils::isScalarCharacter(
                     input[["address"]]
                 )
@@ -186,7 +171,6 @@ BiocCertificate <- function(...) {
                 hide("form")
                 hide("error")
                 show("render_msg")
-                hide("presubmit")
             }, error = function(e) {
                 html("error_msg", e$message)
                 show(id = "error", anim = TRUE, animType = "fade")
@@ -197,7 +181,7 @@ BiocCertificate <- function(...) {
         })
         output$pdfviewer <- renderText({
             cert_file <- certificate(
-                template = input$template,
+                template = input[["template"]],
                 .data = formData(),
                 file =  paste0(
                     gsub("\\s+", "_", input$fullname),

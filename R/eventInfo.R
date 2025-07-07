@@ -57,11 +57,3 @@ eventData <- function(eid, type) {
         bfc, rnames = url, exact = TRUE, download = TRUE, rtype = "web"
     )
 }
-
-.getEname <- function(key, type) {
-    if (type %in% c("letter", "certificate"))
-        type <- "conference"
-    edata <- .filterType(type)
-    edata <- .filterCheckEID(edata, key)
-    edata[["ename"]]
-}
