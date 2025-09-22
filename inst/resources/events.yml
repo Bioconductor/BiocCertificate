@@ -60,3 +60,16 @@ workshop:
     elocation: "Department of Statistics, University of Oxford\\\\[.25cm] Oxford, United Kingdom"
     eurl: https://bioconductor.github.io/2024-09-02-RNASeq-EuroBioc/
     stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/EuroBioc2024/EuroBioC2024.png
+  rnaseqeurobioc2025:
+    ename: "Analysis and Interpretation of Bulk RNA-Seq Data using Bioconductor"
+    edate: September 15 - 16, 2025
+    elocation: "Barcelona Biomedical Research Park (PRBB)\\\\[.25cm] Barcelona, Spain"
+    eurl: https://training.bioconductor.org/workshops/2025-09-EuroBioC/rna-seq/
+    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/EuroBioc2025/EuroBioC2025.png
+  scrnaseqeurobioc2025:
+    ename: "Analysis and Interpretation of Single-cell RNA-Seq Data using Bioconductor"
+    edate: September 15 - 16, 2025
+    elocation: "Barcelona Biomedical Research Park (PRBB)\\\\[.25cm] Barcelona, Spain"
+    eurl: https://training.bioconductor.org/workshops/2025-09-EuroBioC/scrna-seq/
+    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/EuroBioc2025/EuroBioC2025.png
+
