@@ -1,4 +1,10 @@
 conference:
+  eurobioc2025:
+    ename: "European Bioconductor 2025"
+    edate: September 17 - 19, 2025
+    elocation: "Barcelona Biomedical Research Park (PRBB)\\\\[.25cm] Barcelona, Spain"
+    eurl: https://eurobioc2025.bioconductor.org
+    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/EuroBioc2025/EuroBioC2025.png
   gbcc2025:
     ename: "Galaxy Bioconductor Community Conference"
     edate: June 23 - 26, 2025
