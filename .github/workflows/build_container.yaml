@@ -112,5 +112,4 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add galaxy-wrapper.xml
-          git commit -m "Update Galaxy Wrapper $(TZ=EST date '+%Y-%m-%d_%H-%M')"
-          git push
+          git commit -m "Update Galaxy Wrapper $(TZ=EST date '+%Y-%m-%d_%H-%M')" && git push || true
