@@ -9,6 +9,9 @@ RUN chown -R shiny /usr/local/lib/R/site-library && \
     sed -i '/^run_as shiny;/a app_init_timeout 300;\napp_idle_timeout 300;' \
     /etc/shiny-server/shiny-server.conf
 
+RUN Rscript -e "options(repos = c(CRAN = 'https://p3m.dev/cran/__linux__/noble/latest')); \
+    install.packages(c('remotes', 'BiocManager'))"
+
 COPY --chown=shiny:shiny . /tmp/repo/
 
 USER shiny
@@ -17,12 +20,10 @@ RUN cd /tmp/repo && \
     Rscript -e "options(repos = c(CRAN = 'https://p3m.dev/cran/__linux__/noble/latest')); \
     BiocManager::install(ask=FALSE)" && \
     Rscript -e "options(repos = c(CRAN = 'https://p3m.dev/cran/__linux__/noble/latest')); \
-    devtools::install('.', dependencies=TRUE, build_vignettes=TRUE, \
-    repos = BiocManager::repositories()); \
+    remotes::install_local(dependencies=TRUE, build_vignettes=TRUE, repos = BiocManager::repositories()); \
     tinytex::install_tinytex()" && \
     rm -rf /tmp/repo
 
 COPY --chown=shiny:shiny app.R /srv/shiny-server/biocshiny/app.R
 
 USER root
-
