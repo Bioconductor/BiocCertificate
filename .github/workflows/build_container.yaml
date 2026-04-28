@@ -80,18 +80,33 @@ jobs:
 
       - name: save kubeconfig
         shell: bash
-        run: mkdir -p ~/.kube && echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
-      
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
+          chmod 600 ~/.kube/config
+
       - name: Install Kubectl
         run: |
-          curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.24.4/bin/linux/amd64/kubectl" && \
-          chmod +x ./kubectl && \
-          mv ./kubectl /usr/local/bin/kubectl && \
-          kubectl version
+          set -euo pipefail
+          curl -sSLO kubectl "https://storage.googleapis.com/kubernetes-release/release/v1.24.4/bin/linux/amd64/kubectl"
+          chmod +x kubectl
+          mv kubectl /usr/local/bin/kubectl
+
+      - name: Verify Kubernetes auth
+        shell: bash
+        run: |
+          set -euo pipefail
+          kubectl config current-context
+          kubectl cluster-info
+          kubectl auth can-i get pods -n certs
 
       - name: Clean up old pod
+        shell: bash
         run: |
-          sleep 60 && kubectl get pod -n certs -o name | xargs -i kubectl delete -n certs {}
+          set -euo pipefail
+          sleep 60
+          kubectl get pod -n certs -o name | xargs -r -I{} kubectl delete -n certs {}
 
   generate-wrapper:
     needs: [check-wrapper, build-push]
