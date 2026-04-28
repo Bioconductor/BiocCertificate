@@ -9,7 +9,7 @@ Description: A shiny app to generate conference certificates and letters from
   templates. The interactive app allows the user to enter their name and
   generate a PDF file for download. The app uses rmarkdown to render PDF
   certificates and letters with the default pdflatex engine.
-Depends: shiny
+Depends: R (>= 4.2.0), shiny
 Imports:
   BiocBaseUtils,
   BiocFileCache,
