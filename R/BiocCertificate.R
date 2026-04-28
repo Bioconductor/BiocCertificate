@@ -175,25 +175,29 @@ BiocCertificate <- function(...) {
             )
             as.data.frame(t(data))
         })
-        observeEvent(input$submit, {
-            tryCatch({
-                if (!grepl("^[[:alpha:] -]+$", input$fullname))
-                    stop(
-                        "Names must contain only letters, spaces, and hyphens."
-                    )
-                fdata <- formData()
-                hide("form")
-                hide("error")
-                hide("submit_msg")
-                show("render_msg")
-                show("viewer")
-            }, error = function(e) {
-                html("error_msg", e$message)
-                show(id = "error", anim = TRUE, animType = "fade")
-                hide("viewer")
-                hide("render_msg")
-            })
-        })
+        observeEvent(
+            input$submit,
+            {
+                tryCatch({
+                    if (!grepl("^[[:alpha:] -]+$", input$fullname))
+                        stop(
+                            "Names must contain only letters, spaces,",
+                            " and hyphens."
+                        )
+                    fdata <- formData()
+                    hide("form")
+                    hide("error")
+                    hide("submit_msg")
+                    show("render_msg")
+                    show("viewer")
+                }, error = function(e) {
+                    html("error_msg", e$message)
+                    show(id = "error", anim = TRUE, animType = "fade")
+                    hide("viewer")
+                    hide("render_msg")
+                })
+            }
+        )
         output$pdfviewer <- renderText({
             filename <- paste0(
                 gsub("\\s+", "_", input$fullname),
