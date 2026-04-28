@@ -191,7 +191,8 @@ BiocCertificate <- function(...) {
                     show("render_msg")
                     show("viewer")
                 }, error = function(e) {
-                    html("error_msg", e$message)
+                    safe_msg <- htmltools::htmlEscape(e$message)
+                    html("error_msg", safe_msg)
                     show(id = "error", anim = TRUE, animType = "fade")
                     hide("viewer")
                     hide("render_msg")
