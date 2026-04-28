@@ -177,16 +177,21 @@ BiocCertificate <- function(...) {
         })
         observeEvent(input$submit, {
             tryCatch({
+                if (!grepl("^[[:alpha:] -]+$", input$fullname))
+                    stop(
+                        "Names must contain only letters, spaces, and hyphens."
+                    )
                 fdata <- formData()
                 hide("form")
                 hide("error")
+                hide("submit_msg")
                 show("render_msg")
+                show("viewer")
             }, error = function(e) {
                 html("error_msg", e$message)
                 show(id = "error", anim = TRUE, animType = "fade")
-            }, finally = {
-                show("viewer")
-                hide("submit_msg")
+                hide("viewer")
+                hide("render_msg")
             })
         })
         output$pdfviewer <- renderText({
@@ -203,11 +208,11 @@ BiocCertificate <- function(...) {
                 )
             )
             message("PDF generated at: ", cert_file)
-            return(paste0(
-                '<iframe style="height:900px; width:100%" src="',
-                paste0("temp/", filename),
-                '"></iframe>'
-            ))
+            htmltools::tags$iframe(
+                style = "height:900px; width:100%",
+                src = paste0("temp/", filename)
+            ) |>
+                as.character()
         })
     }
     shinyApp(ui, server)
