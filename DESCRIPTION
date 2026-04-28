@@ -1,6 +1,6 @@
 Package: BiocCertificate
 Title: Generate Conference Certificates
-Version: 0.99.16
+Version: 0.99.17
 Authors@R: person(
     "Marcel", "Ramos", , "marcel.ramos@sph.cuny.edu",
     c("aut", "cre"), c(ORCID = "0000-0002-3242-0582")
@@ -25,4 +25,4 @@ License: Artistic-2.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-Date: 2026-04-27
+Date: 2026-04-28
