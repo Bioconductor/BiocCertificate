@@ -51,7 +51,11 @@ BiocCertificate <- function(...) {
         titlePanel(
             windowTitle = "Bioconductor Certificate Form",
             title = div(
-                style = "display: flex; align-items: center; justify-content: space-between;",
+                style = paste(
+                    "display: flex;",
+                    "align-items: center;",
+                    "justify-content: space-between;"
+                ),
                 h1(id = "big-heading", "Certificate of Participation"),
                 img(
                     src = "images/bioconductor_logo_rgb_small.png",
@@ -66,7 +70,8 @@ BiocCertificate <- function(...) {
                         id = "template",
                         radioButtons(
                             "template", "Select format",
-                            c("certificate", "letter", "workshop"), "certificate"
+                            c("certificate", "letter", "workshop"),
+                            "certificate"
                         )
                     ),
                     div(
@@ -125,7 +130,12 @@ BiocCertificate <- function(...) {
         ), # sidebarLayout
         hr(),
         div(
-            style = "display: flex; justify-content: center; align-items: center; gap: 10px;",
+            style = paste(
+                "display: flex;",
+                "justify-content: center;",
+                "align-items: center;",
+                "gap: 10px;"
+            ),
             a(
                 href = "https://github.com/Bioconductor/BiocCertificate",
                 fa("github", height = "2em"),
