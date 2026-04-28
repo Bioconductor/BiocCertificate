@@ -180,18 +180,22 @@ BiocCertificate <- function(...) {
             })
         })
         output$pdfviewer <- renderText({
+            filename <- paste0(
+                gsub("\\s+", "_", input$fullname),
+                "_", input$eid, "_", input$template, ".pdf"
+            )
             cert_file <- certificate(
                 template = input[["template"]],
                 .data = formData(),
-                file =  paste0(
-                    gsub("\\s+", "_", input$fullname),
-                    "_", input$eid, "_", input$template, ".pdf"
+                file = file.path(
+                    shiny::resourcePaths()["temp"],
+                    filename
                 )
             )
-            message(cert_file)
+            message("PDF generated at: ", cert_file)
             return(paste0(
                 '<iframe style="height:900px; width:100%" src="',
-                cert_file,
+                paste0("temp/", filename),
                 '"></iframe>'
             ))
         })

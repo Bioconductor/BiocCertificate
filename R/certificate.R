@@ -100,5 +100,4 @@ certificate <- function(template = "certificate", .data, file) {
     rmarkdown::render(
         input = RmdFile, output_file = file, quiet = TRUE, clean = FALSE
     )
-    file.path("temp", stub)
 }
