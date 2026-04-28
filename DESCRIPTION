@@ -13,7 +13,6 @@ Depends: shiny
 Imports:
   BiocBaseUtils,
   BiocFileCache,
-  crul,
   rmarkdown,
   shinyjs,
   shinythemes,
