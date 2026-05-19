@@ -89,9 +89,11 @@ jobs:
       - name: Install Kubectl
         run: |
           set -euo pipefail
-          curl -sSLO kubectl "https://storage.googleapis.com/kubernetes-release/release/v1.24.4/bin/linux/amd64/kubectl"
+          KUBECTL_VERSION="$(curl -fsSL https://dl.k8s.io/release/stable.txt)"
+          curl -fsSL -o kubectl "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl"
           chmod +x kubectl
-          mv kubectl /usr/local/bin/kubectl
+          sudo mv kubectl /usr/local/bin/kubectl
+          kubectl version --client
 
       - name: Verify Kubernetes auth
         shell: bash
