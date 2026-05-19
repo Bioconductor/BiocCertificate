@@ -1,4 +1,10 @@
 conference:
+  eurobioc2026:
+    ename: "European Bioconductor 2026"
+    edate: June 3 - 5, 2026
+    elocation: "BioCity Turku\\\\[.25cm] Turku, Finland"
+    eurl: https://eurobioc2026.bioconductor.org
+    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/EuroBioc2026/EuroBioC2026.png
   eurobioc2025:
     ename: "European Bioconductor 2025"
     edate: September 17 - 19, 2025
