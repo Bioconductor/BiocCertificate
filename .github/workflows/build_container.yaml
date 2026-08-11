@@ -6,6 +6,8 @@ on:
     branches: devel
     paths:
       - 'DESCRIPTION'
+      - 'Dockerfile'
+      - '.github/workflows/build_container.yaml'
 
 jobs:
   check-wrapper:
