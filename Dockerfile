@@ -27,4 +27,14 @@ RUN cd /tmp/repo && \
 
 COPY --chown=shiny:shiny app.R /srv/shiny-server/biocshiny/app.R
 
+RUN Rscript -e "if (!requireNamespace('BiocCertificate', quietly = TRUE)) { \
+    message('BiocCertificate did not install'); quit(status = 1) }; \
+    cat('BiocCertificate', format(packageVersion('BiocCertificate')), 'OK\n')" && \
+    Rscript -e "invisible(parse('/srv/shiny-server/biocshiny/app.R')); \
+    cat('app.R parses OK\n')" && \
+    Rscript -e "if (!tinytex::is_tinytex() && !nzchar(Sys.which('pdflatex'))) { \
+    message('no working TeX installation: certificates cannot be rendered'); \
+    quit(status = 1) }; \
+    cat('TeX OK\n')"
+
 USER root
