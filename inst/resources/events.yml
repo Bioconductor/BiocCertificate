@@ -4,7 +4,7 @@ conference:
     edate: August 10 - 12, 2026
     elocation: "Fred Hutchinson Cancer Center\\\\[.25cm] Seattle, WA, United States"
     eurl: https://bioc2026.bioconductor.org
-    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/Bioc2026/Bioc2026.png
+    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/Bioc2026/BioC2026.png
   eurobioc2026:
     ename: "European Bioconductor 2026"
     edate: June 3 - 5, 2026
