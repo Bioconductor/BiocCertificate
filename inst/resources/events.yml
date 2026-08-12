@@ -1,4 +1,10 @@
 conference:
+  bioc2026hackathon:
+    ename: "Bioconductor 2026 - Post-conference Hackathon"
+    edate: August 13 - 14, 2026
+    elocation: "Seattle Children’s Research Institute\\\\[.25cm] Seattle, WA, United States"
+    eurl: https://github.com/BiocCodingCollaborations/BiocNA2026_Hackathon
+    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/Bioc2026/BioC2026.png
   bioc2026:
     ename: "Bioconductor 2026"
     edate: August 10 - 12, 2026
