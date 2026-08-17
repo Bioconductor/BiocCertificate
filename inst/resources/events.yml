@@ -54,3 +54,9 @@ workshop:
     elocation: "Department of Statistics, University of Oxford\\\\[.25cm] Oxford, United Kingdom"
     eurl: https://bioconductor.github.io/2024-09-02-RNASeq-EuroBioc/
     stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/EuroBioc2024/EuroBioC2024.png
+  scrnaseqbioc2026:
+    ename: "Bioconductor Carpentry Single-Cell Workshop"
+    edate: August 13 - 14, 2026
+    elocation: "Instructors: Dr. Wes Wilson and Dr. Ted Laderas\\\\[.25cm]Fred Hutchinson Cancer Center\\\\[.25cm]Seattle, WA, United States"
+    eurl: https://bioc2026.bioconductor.org/post-conference/
+    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/Bioc2026/BioC2026.png
