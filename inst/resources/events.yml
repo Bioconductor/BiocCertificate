@@ -90,4 +90,10 @@ workshop:
     elocation: "Barcelona Biomedical Research Park (PRBB)\\\\[.25cm] Barcelona, Spain"
     eurl: https://training.bioconductor.org/workshops/2025-09-EuroBioC/scrna-seq/
     stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/EuroBioc2025/EuroBioC2025.png
+ scrnaseqbioc2026:
+    ename: "Bioconductor Carpentry Single-Cell Workshop"
+    edate: August 13 - 14, 2026
+    elocation: "Instructors: Dr. Wes Wilson and Dr. Ted Laderas\\\\[.25cm]Fred Hutchinson Cancer Center\\\\[.25cm]Seattle, WA, United States"
+    eurl: https://bioc2026.bioconductor.org/post-conference/
+    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/Bioc2026/BioC2026.png
 
