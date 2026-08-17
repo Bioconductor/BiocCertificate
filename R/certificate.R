@@ -41,10 +41,38 @@ templatePath <- function(file = c("certificate", "letter", "workshop")) {
     cbind.data.frame(.data, edf, bioclogo = elogo, biocseal = biocseal)
 }
 
+.escapeLatex <- function(x) {
+    if (!is.character(x))
+        stop(
+            "<internal> field must be a character vector, got: ", class(x)
+        )
+
+    x <- iconv(x, from = "UTF-8", to = "UTF-8", sub = "byte") |>
+        gsub("\\\\", "\\\\textbackslash{}", x = _, perl = TRUE) |>
+        gsub("([&%$#_{}])", "\\\\\\1", x = _, perl = TRUE) |>
+        gsub("~", "\\\\textasciitilde{}",  x = _, perl = TRUE) |>
+        gsub("\\^", "\\\\textasciicircum{}", x = _, perl = TRUE) |>
+        gsub("\\[", "{[}", x = _, perl = TRUE) |>
+        gsub("\\]", "{]}", x = _, perl = TRUE) |>
+        gsub("[[:cntrl:]]", "", x = _, perl = TRUE)
+
+    max_chars <- 500L
+    if (any(nchar(x) > max_chars)) {
+        warning(
+            "Input exceeded length of ", max_chars, " characters; truncating..."
+        )
+        x <- substr(x, 1L, max_chars)
+    }
+    x
+}
+
 .preprocessData <- function(.data) {
-    if (length(.data[["address"]]))
+    .data[["fullname"]] <- .escapeLatex(.data[["fullname"]])
+    if (length(.data[["address"]])) {
+
         .data[["address"]] <-
             gsub("\n", "\\\\", .data[["address"]], fixed = TRUE)
+    }
     if (length(.data[["eurl"]]))
         .data[["eurl"]] <- paste0("\\url{", .data[["eurl"]], "}")
     .data
@@ -70,7 +98,6 @@ certificate <- function(template = "certificate", .data, file) {
     RmdFile <- tempfile(fileext = ".Rmd")
     writeLines(tmpRmd, RmdFile)
     rmarkdown::render(
-        input = RmdFile, output_file = file, quiet = TRUE, clean = FALSE
+        input = RmdFile, output_file = file, quiet = TRUE
     )
-    file.path("temp", stub)
 }

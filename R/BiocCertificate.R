@@ -51,7 +51,11 @@ BiocCertificate <- function(...) {
         titlePanel(
             windowTitle = "Bioconductor Certificate Form",
             title = div(
-                style = "display: flex; align-items: center; justify-content: space-between;",
+                style = paste(
+                    "display: flex;",
+                    "align-items: center;",
+                    "justify-content: space-between;"
+                ),
                 h1(id = "big-heading", "Certificate of Participation"),
                 img(
                     src = "images/bioconductor_logo_rgb_small.png",
@@ -66,7 +70,8 @@ BiocCertificate <- function(...) {
                         id = "template",
                         radioButtons(
                             "template", "Select format",
-                            c("certificate", "letter", "workshop"), "certificate"
+                            c("certificate", "letter", "workshop"),
+                            "certificate"
                         )
                     ),
                     div(
@@ -125,7 +130,12 @@ BiocCertificate <- function(...) {
         ), # sidebarLayout
         hr(),
         div(
-            style = "display: flex; justify-content: center; align-items: center; gap: 10px;",
+            style = paste(
+                "display: flex;",
+                "justify-content: center;",
+                "align-items: center;",
+                "gap: 10px;"
+            ),
             a(
                 href = "https://github.com/Bioconductor/BiocCertificate",
                 fa("github", height = "2em"),
@@ -165,35 +175,49 @@ BiocCertificate <- function(...) {
             )
             as.data.frame(t(data))
         })
-        observeEvent(input$submit, {
-            tryCatch({
-                fdata <- formData()
-                hide("form")
-                hide("error")
-                show("render_msg")
-            }, error = function(e) {
-                html("error_msg", e$message)
-                show(id = "error", anim = TRUE, animType = "fade")
-            }, finally = {
-                show("viewer")
-                hide("submit_msg")
-            })
-        })
+        observeEvent(
+            input$submit,
+            {
+                tryCatch({
+                    if (!grepl("^[[:alpha:] -]+$", input$fullname))
+                        stop(
+                            "Names must contain only letters, spaces,",
+                            " and hyphens."
+                        )
+                    fdata <- formData()
+                    hide("form")
+                    hide("error")
+                    hide("submit_msg")
+                    show("render_msg")
+                    show("viewer")
+                }, error = function(e) {
+                    safe_msg <- htmltools::htmlEscape(e$message)
+                    html("error_msg", safe_msg)
+                    show(id = "error", anim = TRUE, animType = "fade")
+                    hide("viewer")
+                    hide("render_msg")
+                })
+            }
+        )
         output$pdfviewer <- renderText({
+            filename <- paste0(
+                gsub("\\s+", "_", input$fullname),
+                "_", input$eid, "_", input$template, ".pdf"
+            )
             cert_file <- certificate(
                 template = input[["template"]],
                 .data = formData(),
-                file =  paste0(
-                    gsub("\\s+", "_", input$fullname),
-                    "_", input$eid, "_", input$template, ".pdf"
+                file = file.path(
+                    shiny::resourcePaths()["temp"],
+                    filename
                 )
             )
-            message(cert_file)
-            return(paste0(
-                '<iframe style="height:900px; width:100%" src="',
-                cert_file,
-                '"></iframe>'
-            ))
+            message("PDF generated at: ", cert_file)
+            htmltools::tags$iframe(
+                style = "height:900px; width:100%",
+                src = paste0("temp/", filename)
+            ) |>
+                as.character()
         })
     }
     shinyApp(ui, server)

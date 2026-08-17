@@ -1,6 +1,6 @@
 Package: BiocCertificate
 Title: Generate Conference Certificates
-Version: 0.99.13
+Version: 0.99.25
 Authors@R: person(
     "Marcel", "Ramos", , "marcel.ramos@sph.cuny.edu",
     c("aut", "cre"), c(ORCID = "0000-0002-3242-0582")
@@ -9,11 +9,11 @@ Description: A shiny app to generate conference certificates and letters from
   templates. The interactive app allows the user to enter their name and
   generate a PDF file for download. The app uses rmarkdown to render PDF
   certificates and letters with the default pdflatex engine.
-Depends: shiny
+Depends: R (>= 4.2.0), shiny
 Imports:
   BiocBaseUtils,
   BiocFileCache,
-  crul,
+  htmltools,
   rmarkdown,
   shinyjs,
   shinythemes,
@@ -25,5 +25,5 @@ Suggests:
 License: Artistic-2.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
-Date: 2025-07-07
+RoxygenNote: 7.3.3
+Date: 2026-05-19

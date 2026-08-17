@@ -1,4 +1,28 @@
 conference:
+  bioc2026hackathon:
+    ename: "Bioconductor 2026 - Post-conference Hackathon"
+    edate: August 13 - 14, 2026
+    elocation: "Seattle Children’s Research Institute\\\\[.25cm] Seattle, WA, United States"
+    eurl: https://github.com/BiocCodingCollaborations/BiocNA2026_Hackathon
+    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/Bioc2026/BioC2026.png
+  bioc2026:
+    ename: "Bioconductor 2026"
+    edate: August 10 - 12, 2026
+    elocation: "Fred Hutchinson Cancer Center\\\\[.25cm] Seattle, WA, United States"
+    eurl: https://bioc2026.bioconductor.org
+    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/Bioc2026/BioC2026.png
+  eurobioc2026:
+    ename: "European Bioconductor 2026"
+    edate: June 3 - 5, 2026
+    elocation: "BioCity Turku\\\\[.25cm] Turku, Finland"
+    eurl: https://eurobioc2026.bioconductor.org
+    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/EuroBioc2026/EuroBioC2026.png
+  eurobioc2025:
+    ename: "European Bioconductor 2025"
+    edate: September 17 - 19, 2025
+    elocation: "Barcelona Biomedical Research Park (PRBB)\\\\[.25cm] Barcelona, Spain"
+    eurl: https://eurobioc2025.bioconductor.org
+    stickerdl: https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/events/EuroBioc2025/EuroBioC2025.png
   gbcc2025:
     ename: "Galaxy Bioconductor Community Conference"
     edate: June 23 - 26, 2025
